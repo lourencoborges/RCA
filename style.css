@@ -337,6 +337,7 @@ footer{background:#03170d;color:#8ea298;padding:28px 0}
   .section-heading{display:block}
   .section-heading>p{margin-top:20px}
 <<<<<<< HEAD:style.css
+<<<<<<< HEAD:style.css
 
   .services-grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -358,6 +359,14 @@ footer{background:#03170d;color:#8ea298;padding:28px 0}
   .service-card p{font-size:13px;line-height:1.45;margin-bottom:20px;min-height:56px}
   .service-card a{font-size:11px;gap:4px}
 
+=======
+  .services-grid{grid-template-columns:1fr;padding:0}
+  .service-card{padding-left:0;padding-right:0;padding-bottom:42px}
+  .service-card:nth-child(even),
+  .service-card:nth-child(3n+2),
+  .service-card:nth-child(3n+3){border-left:0}
+  .service-card:nth-child(n+2){border-top:1px solid #d6e1d9}
+>>>>>>> parent of aa5de5c (mobile fix):RCA-Informatica/style.css
 =======
   .services-grid{grid-template-columns:1fr;padding:0}
   .service-card{padding-left:0;padding-right:0;padding-bottom:42px}
