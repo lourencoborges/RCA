@@ -226,35 +226,151 @@ footer{background:#03170d;color:#8ea298;padding:28px 0}
   .step:nth-child(-n+2){border-bottom:1px solid #dce5de}
   .cta-inner{flex-direction:column;align-items:flex-start}
 }
-@media(max-width:620px){
+@keyframes floatMobile{
+  0%,100%{transform:translate(-50%,-50%) rotate(0)}
+  50%{transform:translate(-50%,calc(-50% - 10px)) rotate(-1deg)}
+}
+
+@media(max-width:200px){
+  /* =========================================================
+     HERO MOBILE
+     O notebook fica centralizado atrás do conteúdo, mas com
+     uma camada escura entre a imagem e o texto para manter
+     a leitura confortável.
+     ========================================================= */
+  .hero{
+    min-height:790px;
+    isolation:isolate;
+  }
+
+  .hero:before{
+    z-index:2;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(1,9,5,.94) 0%,
+        rgba(1,12,7,.90) 22%,
+        rgba(1,12,7,.82) 43%,
+        rgba(1,12,7,.88) 67%,
+        rgba(1,9,5,.96) 100%
+      );
+  }
+
+  .hero-content{
+    min-height:790px;
+    z-index:3;
+    display:block;
+  }
+
+  .hero-copy{
+    position:relative;
+    z-index:3;
+    width:100%;
+    padding-top:125px;
+  }
+
+  /* Imagem centralizada atrás das letras. */
+  .hero-device{
+    left:50%;
+    right:auto;
+    top:51%;
+    bottom:auto;
+    width:min(108vw,430px);
+    z-index:1;
+    opacity:.17;
+    filter:drop-shadow(0 22px 28px rgba(0,0,0,.38));
+    transform:translate(-50%,-50%);
+    animation:floatMobile 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+
+  .hero-device img{
+    width:100%;
+    opacity:1;
+  }
+
+  /* O círculo decorativo não compete com o notebook/texto no celular. */
+  .hero-device .device-ring{
+    display:none;
+  }
+
+  .hero h1{
+    position:relative;
+    z-index:4;
+    font-size:43px;
+    line-height:1.03;
+    text-shadow:0 3px 18px rgba(0,0,0,.55);
+  }
+
+  .hero p{
+    position:relative;
+    z-index:4;
+    font-size:16px;
+    line-height:1.65;
+    color:#d4dfd8;
+    max-width:100%;
+    margin:28px 0;
+    text-shadow:0 2px 12px rgba(0,0,0,.65);
+  }
+
+  .hero-actions{
+    position:relative;
+    z-index:4;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .btn{width:100%}
+
+  .trust-line{
+    position:relative;
+    z-index:4;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
   .container{width:min(100% - 28px,1180px)}
   .nav{height:74px}
   .brand{width:145px}
-  .hero{min-height:780px}
-  .hero-content{min-height:780px}
-  .hero h1{font-size:43px}
-  .hero p{font-size:16px}
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .btn{width:100%}
-  .trust-line{gap:10px;flex-wrap:wrap}
+
   .section{padding:78px 0}
   .section-heading{display:block}
   .section-heading>p{margin-top:20px}
-  .hero-device{opacity:.20;right:-90px;bottom:30px;width:380px}
-  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:0}
-  .service-card{padding:22px 14px 30px;min-width:0}
+
+  .services-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    padding:0;
+  }
+
+  .service-card{
+    padding:22px 14px 30px;
+    min-width:0;
+  }
+
   .service-card:nth-child(3n+2),
   .service-card:nth-child(3n+3){border-left:0}
   .service-card:nth-child(even){border-left:1px solid #d6e1d9}
   .service-card:nth-child(n+3){border-top:1px solid #d6e1d9}
+
   .service-card img{height:135px;margin-bottom:12px}
   .service-card h3{font-size:19px;line-height:1.15;margin-bottom:7px}
   .service-card p{font-size:13px;line-height:1.45;margin-bottom:20px;min-height:56px}
   .service-card a{font-size:11px;gap:4px}
+
   .steps{grid-template-columns:1fr}
   .step,.step:nth-child(2){border-right:0;border-bottom:1px solid #dce5de}
   .step:last-child{border-bottom:0}
+
   .footer-inner{flex-direction:column;text-align:center}
   .floating-whatsapp{width:58px;height:58px;right:16px;bottom:16px}
   .floating-whatsapp img{width:40px;height:40px}
+}
+
+@keyframes floatMobile{
+  0%,100%{
+    transform:translate(-50%,-50%) rotate(0deg);
+  }
+  50%{
+    transform:translate(-50%,calc(-50% - 8px)) rotate(-1deg);
+  }
 }
