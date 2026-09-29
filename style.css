@@ -360,7 +360,7 @@ footer{background:#03170d;color:#8ea298;padding:28px 0}
 
 @media(max-width:600px){
   html,body{max-width:100%;overflow-x:hidden}
-  .hero-device{top:24%;width:min(108vw,430px)}
+  .hero-device{top:34%;width:min(108vw,430px)}
 }
 
 /* Conteúdo entra suavemente conforme a pessoa percorre a página. */
