@@ -33,3 +33,8 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
   }, { threshold: 0.12 });
   revealTargets.forEach(section => revealObserver.observe(section));
 }
+
+document.querySelector('footer a[href="#inicio"]')?.addEventListener("click", event => {
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
