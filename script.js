@@ -1,26 +1,26 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector(".mobile-menu");
 
+const setMobileMenuOpen = open => {
+  mobileMenu?.classList.toggle("open", open);
+  menuToggle?.setAttribute("aria-expanded", String(open));
+  menuToggle?.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  if (menuToggle) menuToggle.textContent = open ? "×" : "☰";
+};
 
 menuToggle?.addEventListener("click", () => {
-  const open = mobileMenu.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", open);
-  menuToggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  setMobileMenuOpen(!mobileMenu?.classList.contains("open"));
 });
 
 document.querySelectorAll(".mobile-menu a").forEach(link => {
   link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Abrir menu");
+    setMobileMenuOpen(false);
   });
 });
 
 document.addEventListener("keydown", event => {
   if (event.key !== "Escape" || !mobileMenu?.classList.contains("open")) return;
-  mobileMenu.classList.remove("open");
-  menuToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-label", "Abrir menu");
+  setMobileMenuOpen(false);
   menuToggle?.focus();
 });
 
@@ -28,14 +28,20 @@ const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
 
 const header = document.querySelector(".header");
+let maxScroll = 0;
 const updateScrollState = () => {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
   header?.style.setProperty("--scroll-progress", `${progress}%`);
   header?.classList.toggle("scrolled", window.scrollY > 20);
 };
+const updateScrollRange = () => {
+  maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  updateScrollState();
+};
 window.addEventListener("scroll", updateScrollState, { passive: true });
-updateScrollState();
+window.addEventListener("resize", updateScrollRange, { passive: true });
+window.addEventListener("load", updateScrollRange, { once: true });
+updateScrollRange();
 
 const revealTargets = document.querySelectorAll("main > section:not(.hero), .services-grid");
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -71,5 +77,6 @@ if ("IntersectionObserver" in window && sections.length) {
 
 document.querySelector('footer a[href="#inicio"]')?.addEventListener("click", event => {
   event.preventDefault();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
 });
