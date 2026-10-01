@@ -30,10 +30,10 @@
         <span>(11) 97975-2694</span>
       </a>
 
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
     </div>
 
-    <div class="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu">
       <a href="#servicos">Serviços</a>
       <a href="#por-que-nos">Por que nós?</a>
       <a href="#processo">Como funciona</a>
@@ -46,8 +46,9 @@
       <div class="hero-glow"></div>
       <div class="container hero-content">
         <div class="hero-copy">
+          <span class="hero-kicker"><i></i> RCA · ELETRÔNICA E INFORMÁTICA</span>
           <h1>Não troque. <br><span>Conserte</span></h1>
-          <p>Conserto e manutenção de eletrônicos para você voltar a usar o que já é seu — com atendimento direto e orçamento.</p>
+          <p class="hero-subtitle">Seu aparelho ainda pode ter muito tempo pela frente. A RCA avalia o problema e orienta você sobre o melhor caminho.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/5511979752694?text=Olá!%20Quero%20um%20orçamento." target="_blank" rel="noopener noreferrer">
               Solicitar orçamento <strong>↗</strong>
@@ -64,9 +65,10 @@
         <div class="hero-device" aria-hidden="true">
           <div class="device-ring"></div>
           <img src="assets/notebook.png" alt="">
+          <div class="device-caption"><span class="caption-pulse"></span><span>Uma segunda chance<br><strong>para o seu aparelho.</strong></span></div>
         </div>
       </div>
-      <div class="hero-bottom-fade"></div>
+      <a class="hero-scroll" href="#servicos"><span></span> DESCUBRA NOSSOS SERVIÇOS</a>
     </section>
 
     <section class="problem section">
@@ -87,8 +89,10 @@
         <div class="section-heading">
           <div>
             <span class="section-tag">O QUE CONSERTAMOS</span>
-            
-            
+            <h2>Uma segunda vida para os seus <span>eletrônicos.</span></h2>
+          </div>
+          <p>Atendimento para diferentes aparelhos, com conversa direta e orientação sobre os próximos passos.</p>
+        </div>
         <div class="services-grid">
           <article class="service-card ">
             <div class="card-top"><span></span><span></span></div>
